@@ -9,7 +9,7 @@ Torch->ONNX->TF2->TFLite
 - `--torch-model-path`: Path to local PyTorch model, e.g. `.checkpoints/best_total_100.pt` (default)
 - `--tf-lite-model-path`: Path to TFLite model, it can be usable as a save path and load path same time, e.g. `./converter/tf_lite_model.tflite` (default)
 - `--test-im-path`: Single image path to test converted model on it, e.g. `./converter/test_images/test.png` (default)
-- `--show-results`: Shows bounding box comparison between models, e.g. `False` (default)
+- `--show-results`: Shows error between models, e.g. `False` (default)
 - `--convert`: Converts model, if this argument is false. It's only shows comparison between old converted models. e.g. `True`
 
 #### Basic usage of the script
