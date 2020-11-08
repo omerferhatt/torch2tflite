@@ -25,11 +25,11 @@ Convert models and show results:
     
 
 #### Required libraries
-   tensorflow==2.2.0 (conda)
-   tensorflow-addons==0.11.2 (pip)
-   pytorch==1.7.0 (cpu-only) (conda channel=pytorch)
-   onnx==1.8.0 (pip)
-   onnx-tf==1.6.0 (pip channel=git repo)
+    tensorflow==2.2.0 (conda)
+    tensorflow-addons==0.11.2 (pip)
+    pytorch==1.7.0 (cpu-only) (conda channel=pytorch)
+    onnx==1.8.0 (pip)
+    onnx-tf==1.6.0 (pip channel=git repo)
 	
 
 	
