@@ -1,11 +1,15 @@
-import onnx
-import torch
+import os
+import shutil
+import sys
+
 import cv2
 import numpy as np
+import onnx
 import tensorflow as tf
+import torch
 from PIL import Image
-from torchvision import transforms
 from onnx_tf.backend import prepare
+from torchvision import transforms
 
 
 # ------------------ Image IO ------------------ #
@@ -144,21 +148,29 @@ def calc_error(res1, res2, verbose=False):
 
 # ------------------ Main Convert Function ------------------#
 def convert(torch_model_path, tf_lite_model_path, image_path):
-    ONNX_PATH = "./converter/onnx_model.onnx"
-    TF_PATH = "./converter/tf_model"
+    if os.path.exists('output'):
+        shutil.rmtree('output')
+        os.mkdir('output')
+    else:
+        os.mkdir('output')
+    ONNX_PATH = "output/onnx_model.onnx"
+    TF_PATH = "output/tf_model"
 
     try:
         torch_to_onnx(torch_path=torch_model_path, onnx_path=ONNX_PATH, image_path=image_path)
         print('\n\nTorch to ONNX converted!\n\n')
-    except:
-        pass
+    except Exception as e:
+        print(e)
+        sys.exit(1)
     try:
         onnx_to_tf(onnx_path=ONNX_PATH, tf_path=TF_PATH)
         print('\n\nONNX to TF converted!\n\n')
-    except:
-        pass
+    except Exception as e:
+        print(e)
+        sys.exit(1)
     try:
         tf_to_tf_lite(tf_path=TF_PATH, tf_lite_path=tf_lite_model_path)
         print('\n\nTF to TFLite converted!\n\n')
-    except:
-        pass
+    except Exception as e:
+        print(e)
+        sys.exit(1)

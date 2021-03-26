@@ -1,5 +1,6 @@
 import argparse
-from converter.torch_to_tflite import *
+
+from converter import *
 
 
 def init_models(torch_model_path, tf_lite_model_path):
