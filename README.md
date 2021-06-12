@@ -26,15 +26,15 @@ Please install first
 To test with sample file:
 
     python3 -m torch2tflite.converter
-        --torch-path mobilenetv2_model.pt
-        --tflite-path test.tflite
+        --torch-path tests/mobilenetv2_model.pt
+        --tflite-path mobilenetv2.tflite
         --sample-file sample_image.png
         --target-shape 224 224 3
 
 To test with random input to check gradients:
 
     python3 -m torch2tflite.converter
-        --torch-path mobilenetv2_model.pt
-        --tflite-path test.tflite
+        --torch-path tests/mobilenetv2_model.pt
+        --tflite-path mobilenetv2.tflite
         --target-shape 224 224 3
         --seed 10
