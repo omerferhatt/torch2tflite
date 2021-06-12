@@ -4,6 +4,13 @@ Converts PyTorch whole model into Tensorflow Lite
 
 PyTorch -> Onnx -> Tensorflow 2 -> TFLite
 
+
+Please install first
+
+
+    python3 setup.py install
+    
+    
 #### Args
 
 - `--torch-path` Path to local PyTorch model, please save whole model e.g. [torch.save(model, PATH)](https://pytorch.org/tutorials/beginner/saving_loading_models.html#save-load-entire-model)
