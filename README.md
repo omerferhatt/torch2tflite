@@ -1,35 +1,33 @@
 ## PyTorch to TensorFlow Lite Converter
 
-It uses ONNX and TF2 as bridge between Torch and TFLite
+Converts PyTorch whole model into Tensorflow Lite
 
-Torch -> ONNX -> TF2 -> TFLite
+PyTorch -> Onnx -> Tensorflow 2 -> TFLite
 
 #### Args
 
-- `--torch-model-path`: Path to local PyTorch model, e.g. `torch_models/torch_model.pt` (default)
-- `--tf-lite-model-path`: Path to TFLite model, it can be usable as a save path and load path same time,
-  e.g. `output/tf_lite_model.tflite` (default)
-- `--test-im-path`: Single image path to test converted model on it, e.g. `sample/test.png` (default)
-- `--show-results`: Shows error between models, e.g. `False` (default)
-- `--convert`: Converts model, if this argument is false. It's only shows comparison between old converted models.
-  e.g. `True`
+- `--torch-path` Path to local PyTorch model, please save whole model e.g. [torch.save(model, PATH)](https://pytorch.org/tutorials/beginner/saving_loading_models.html#save-load-entire-model)
+- `--tf-lite-path` Save path for Tensorflow Lite model
+- `--target-shape` Model input shape to create static-graph (default: `(224, 224, 3`)
+- `--sample-file` Path to sample image file. If model is not about computer-vision, please use leave empty and only
+  enter `--target-shape`
+- `--seed` Seeds RNG to produce random input data when `--sample-file` does not exists
+- `--log=INFO` To see what happens behind
 
 #### Basic usage of the script
 
-Convert models and show results:
+To test with sample file:
 
-    python3 converter.py \
-    --torch-model-path torch_models/torch_model.pt \
-    --tf-lite-model-path output/tf_lite_model.tflite \
-    --test-im-path sample/test.png \
-    --show-results \
-    --convert
-    
+    python3 -m torch2tflite.converter
+        --torch-path mobilenetv2_model.pt
+        --tflite-path test.tflite
+        --sample-file sample_image.png
+        --target-shape 224 224 3
 
-#### Required libraries
+To test with random input to check gradients:
 
-    tensorflow>=2.3.1 (conda)
-    tensorflow-addons>=0.11.2 (pip)
-    pytorch>=1.7.0 (cpu-only) (conda channel=pytorch)
-    onnx>=1.8.0 (pip)
-    onnx-tf>=1.7.0 (pip channel=git repo)
+    python3 -m torch2tflite.converter
+        --torch-path mobilenetv2_model.pt
+        --tflite-path test.tflite
+        --target-shape 224 224 3
+        --seed 10
