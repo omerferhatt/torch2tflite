@@ -1,0 +1,7 @@
+{
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--config=black.toml"
+    ],
+    "python.languageServer": "Pylance"
+}
