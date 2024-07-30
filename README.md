@@ -1,3 +1,6 @@
+> :heavy_exclamation_mark: This codebase has been archived because there are more updated solutions available.
+> Please check out https://ai.google.dev/edge/lite/models/pytorch_to_tflite
+
 ## PyTorch to TensorFlow Lite Converter
 
 Converts PyTorch whole model into Tensorflow Lite
